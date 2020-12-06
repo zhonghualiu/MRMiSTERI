@@ -1,0 +1,12 @@
+Package: MRMiSTERI
+Type: Package
+Title: Mixed-Scale Treatment Effect Robust Identification (MR MiSTERI) and Estimation
+Version: 0.1.0
+Author: Zhonghua Liu, Ting Ye, Baoluo Sun and Eric Tchetgen Tchetgen
+Maintainer: Zhonghua Liu <zhhliu@hku.hk>
+Description: This package performs robust Mendelian randomization to estimate the effect of treatment on the treated with possibly invalid IVs.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+
