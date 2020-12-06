@@ -11,3 +11,6 @@ devtools::install_github("https://github.com/zhonghualiu/MRMiSTERI")
 ```
 # License 
 This software is licensed under MIT. 
+
+# Reference
+https://www.medrxiv.org/content/10.1101/2020.09.29.20204420v3
