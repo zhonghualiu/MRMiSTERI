@@ -30,7 +30,7 @@ misterigauss = function(Z=Z,A=A,Y=Y){
   beta = summary(fit3)$coef[1,1]
   gamma = summary(fit3)$coef[2,1]
   par_est = c(beta, gamma, eta, theta_0,theta_z)
-
+  
   neg.log.like = function(pars){
     beta = pars[1]
     gamma = pars[2]
@@ -45,9 +45,9 @@ misterigauss = function(Z=Z,A=A,Y=Y){
     nll = log(sigma_AZ) + (Y- mu_AZ)^2/(2*sigma_AZ^2)
     return(sum(nll))
   }
-
+  
   MLE_opt = optim(par =par_est,fn = neg.log.like,hessian = TRUE)
-  MLE_res = MLE_opt$par[c(1,2,4)]
+  MLE_res = MLE_opt$par[c(1,2,4)] 
   MLE_se = sqrt(diag(solve(MLE_opt$hessian)))[c(1,2,4)]
   names(MLE_res) = c("beta","gamma","eta_z") ## eta_z is the IV strength
   names(MLE_se) = c("SE_beta","SE_gamma","SE_eta_z") ## eta_z is the IV strength
@@ -56,4 +56,3 @@ misterigauss = function(Z=Z,A=A,Y=Y){
   #tmp = c(MLE_res[1:2],MLE_se)
   return(tmp)
 }
-
