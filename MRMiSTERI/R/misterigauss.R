@@ -49,10 +49,10 @@ misterigauss = function(Z=Z,A=A,Y=Y){
   MLE_opt = optim(par =par_est,fn = neg.log.like,hessian = TRUE)
   MLE_res = MLE_opt$par[c(1,2,4)] 
   MLE_se = sqrt(diag(solve(MLE_opt$hessian)))[c(1,2,4)]
-  names(MLE_res) = c("beta","gamma","eta_z") ## eta_z is the IV strength
-  names(MLE_se) = c("SE_beta","SE_gamma","SE_eta_z") ## eta_z is the IV strength
+  names(MLE_res) = c("Effect_beta","Confounding_gamma","eta_z") ## eta_z is the IV strength
+  names(MLE_se) = c("Effect_beta_SE","Confounding_gamma_SE","SE_eta_z") ## eta_z is the IV strength
   tmp = list(MLE_res,MLE_se)
-  names(tmp)= c("Estimates","SE")
+  names(tmp)= c("Parameter_estimates","SE")
   #tmp = c(MLE_res[1:2],MLE_se)
   return(tmp)
 }
