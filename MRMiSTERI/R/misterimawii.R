@@ -50,7 +50,11 @@ misterimawii<-function(Z,A,Y){
   MLE_hessian =optimHess(MLE_est,fn = neg.log.like)
   criteria<-min(eigen(MLE_hessian)$values)/length(par_start)
   MLE_se = sqrt(diag(solve(MLE_hessian))[1:2])
-  tmp = list(MLE_est,MLE_se,criteria)
-  names(tmp)= c("MLE_est","MLE_se","criteria")
+  Zvalue = MLE_est/MLE_se
+  pvalue = 2*(1-pnorm(abs(Zvalue))) ## two-sided test pvalue
+  CI.lower = MLE_est - 1.96*MLE_se
+  CI.upper = MLE_est + 1.96*MLE_se
+  tmp = list(MLE_est,MLE_se,pvalue,CI.lower, CI.upper, criteria)
+  names(tmp)= c("effect_estimate","effect_SE","pvalue","95%CI.lower", "95%CI.upper","criteria")
   return(tmp)
 }
